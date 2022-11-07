@@ -1,0 +1,3 @@
+.env
+File used to get the location of the databas file, must be in format:
+DATABASE_URL="file:\Users\...\ATMData.db"

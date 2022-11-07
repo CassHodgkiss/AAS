@@ -3,7 +3,28 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-    //const card = await prisma.creditCards.create(
+
+    const account = await prisma.accounts.findFirst({
+        where: {
+            Id: 5
+        }
+    })
+    
+    console.log(account)
+}
+
+
+main()
+  .then(async () => {
+    await prisma.$disconnect()
+  })
+  .catch(async (e) => {
+    console.error(e)
+    await prisma.$disconnect()
+    process.exit(1)
+  })
+
+      //const card = await prisma.creditCards.create(
     //    {
     //        data:
     //        {
@@ -20,23 +41,3 @@ async function main() {
     //        Id: 2
     //    }
     //})
-
-    //const account = await prisma.accounts.findFirst({
-    //    where: {
-    //        Id: 5
-    //    }
-    //})
-    
-    //console.log(account)
-}
-
-
-main()
-  .then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  })
