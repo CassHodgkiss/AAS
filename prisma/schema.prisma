@@ -99,3 +99,9 @@ model WithdrawDeposits {
   IsWithdrawn       Int
   Transaction       Transactions @relation(fields: [TransactionId], references: [Id], onDelete: NoAction, onUpdate: NoAction)
 }
+
+model Admins {
+  Id           Int    @id @unique(map: "sqlite_autoindex_Admins_1") @default(autoincrement())
+  Username     String
+  PasswordHash String
+}
